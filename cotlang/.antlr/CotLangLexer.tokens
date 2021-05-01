@@ -1,0 +1,16 @@
+IF=1
+FOR=2
+WHILE=3
+EXPECT=4
+TRACE=5
+ID=6
+WS=7
+TAB=8
+NEWLINE=9
+'if'=1
+'for'=2
+'while'=3
+'expect'=4
+'trace'=5
+' '=7
+'\t'=8
