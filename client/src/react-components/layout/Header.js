@@ -1,31 +1,63 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import SignedInLinks from './SignedInLinks'
-import SignedOutLinks from './SignedOutLinks'
-import { NavLink } from 'react-bootstrap'
-import { getCurrentUser } from '../../api-calls/user-api-calls'
-import FetchWrapper from "../fetchWrapper"
+import React from "react";
+import { Navbar, Nav, Image, Dropdown, Spinner, ProgressBar } from "react-bootstrap";
+import logo from "../../assets/logo.png";
+import defaultUserPic from "../../assets/user.png";
 
 const Header = (props) => {
-    return ( 
-      <nav className="navbar navbar-expand-md navbar-light bg-light py-1">
-        
-        <div className="navbar navbar-expand-md navbar-light bg-light">
-            <NavLink className="navbar-brand mx-auto" as={Link} to="/">LetCode</NavLink>
-        </div>
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-          <ul className="navbar-nav ml-auto">
-            {props.data ? <SignedInLinks user={props.data}></SignedInLinks> : <SignedOutLinks></SignedOutLinks>}
-            </ul>
-        </div>
-    </nav>
-    )
-}
+  return (
+    <Navbar bg="light">
+      <Navbar.Brand className="py-2 px-3" href="/">
+        <Image src={logo} height="32" />
+      </Navbar.Brand>
 
-function wrappedHeader() {
-  return <FetchWrapper fetchData={getCurrentUser}><Header /></FetchWrapper>;
-}
+      <Navbar.Collapse className="justify-content-end">
+        {!props.isLogin ? (
+          <>
+            <Nav>
+              <Dropdown as={Nav.Item}>
+                <Dropdown.Toggle as={Nav.Link}>
+                  My Editor{" "}
+                  <Spinner animation="border" size="sm" aria-hidden="true" />
+                </Dropdown.Toggle>
+                <Dropdown.Menu alignRight>
+                  <Dropdown.Header>Testing "sss"...</Dropdown.Header>
+                  <Dropdown.ItemText>
+                    <ProgressBar animated now={45} />
+                  </Dropdown.ItemText>
+                  <Dropdown.Item>
+                    Stop Testing
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Header>Recent Answers:</Dropdown.Header>
+                  <Dropdown.Item>Another action</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Nav.Link> New Question</Nav.Link>
+            </Nav>
 
+            <Dropdown className="px-3">
+              <Dropdown.Toggle as={Nav.Link} bsPrefix="p-0">
+                <Image
+                  src={props.userProfilePic || defaultUserPic}
+                  height="32"
+                />
+              </Dropdown.Toggle>
+              <Dropdown.Menu alignRight>
+                <Dropdown.Header>User01</Dropdown.Header>
+                <Dropdown.Divider />
+                <Dropdown.Item>My Profile</Dropdown.Item>
+                <Dropdown.Item>Log out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </>
+        ) : (
+          <Nav className="px-3">
+            <Nav.Link to="/login">Log in/Sign Up</Nav.Link>
+          </Nav>
+        )}
+      </Navbar.Collapse>
+    </Navbar>
+  );
+};
 
-
-export default wrappedHeader;
+export default Header;
