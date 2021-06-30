@@ -1,0 +1,8 @@
+.dropdown-menu-right {
+    right:0;
+    left:auto;
+}
+
+.dropdown-toggle-no-caret:after {
+    display: none;
+}
