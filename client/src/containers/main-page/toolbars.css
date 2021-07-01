@@ -1,0 +1,13 @@
+.toolbar-tag-group-collapse {
+    height: 30px;
+}
+
+.toolbar-tag {
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid white;
+}
+
+.toolbar-tag:hover {
+    border: 1px solid black;
+}
