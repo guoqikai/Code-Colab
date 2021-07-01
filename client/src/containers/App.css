@@ -6,3 +6,15 @@
 .dropdown-toggle-no-caret:after {
     display: none;
 }
+
+.colab-bg-green {
+    background-color: #5cb85c !important;
+}
+
+.colab-green {
+    color: #5cb85c !important;
+}
+
+.colab-border-green {
+    border-color: #5cb85c !important;
+}

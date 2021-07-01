@@ -4,7 +4,7 @@ import defaultUserPic from "../common/assets/user.png";
 
 const AppNavBar = ({isLogin, userProfilePic,  }) => {
   return (
-    <Navbar bg="light">
+    <Navbar bg="light" sticky="top">
       <Navbar.Brand className="py-2 px-3" href="/">
         <Image src={logo} height="32" />
       </Navbar.Brand>
@@ -23,9 +23,7 @@ const AppNavBar = ({isLogin, userProfilePic,  }) => {
                   <Dropdown.ItemText>
                     <ProgressBar animated now={45} />
                   </Dropdown.ItemText>
-                  <Dropdown.Item>
-                    Stop Testing
-                  </Dropdown.Item>
+                  <Dropdown.Item>Stop Testing</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Header>Recent Answers:</Dropdown.Header>
                   <Dropdown.Item>Another action</Dropdown.Item>
@@ -36,10 +34,7 @@ const AppNavBar = ({isLogin, userProfilePic,  }) => {
 
             <Dropdown className="px-3">
               <Dropdown.Toggle as={Nav.Link} bsPrefix="p-0">
-                <Image
-                  src={userProfilePic || defaultUserPic}
-                  height="32"
-                />
+                <Image src={userProfilePic || defaultUserPic} height="32" />
               </Dropdown.Toggle>
               <Dropdown.Menu alignRight>
                 <Dropdown.Header>User01</Dropdown.Header>

@@ -7,12 +7,15 @@ import {
   Badge,
   CardColumns,
   ButtonGroup,
-  Button
+  Button,
 } from "react-bootstrap";
+import { TagGroup, SortBy } from "./toolbars";
+import logo from "../../common/assets/logo-big.png";
+
 
 const MainPage = (props) => {
   return (
-    <Container className="p-5">
+    <Container className="py-5">
       <Row className="mb-2">
         <h5>Top Questions</h5>
       </Row>
@@ -26,40 +29,47 @@ const MainPage = (props) => {
               longer.
             </Card.Text>
             <Card.Text>
-              <Badge className="bg-dark mx-1">Algorithm</Badge>
-              <Badge className="bg-dark mx-1">Python</Badge>
+              <Badge className="text-dark mx-1">Algorithm</Badge>
+              <Badge className="text-dark mx-1">Python</Badge>
+            </Card.Text>
+            <Card.Text className="text-end small text-muted">
+              255 answers, 18 test cases
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="bg-dark text-white text-end">
-            255 answers, 18 test cases
-          </Card.Footer>
         </Card>
         <Card as={Col} className="mx-3 p-0">
-          <Card.Img variant="top" src="holder.js/100px160" />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This card has supporting text below as a natural lead-in to
-              additional content.{" "}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card as={Col} className="d-none d-lg-block mx-3 p-0">
-          <Card.Img variant="top" src="holder.js/100px160" />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
             <Card.Text>
               This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
+              lead-in to additional content. This content is a little bit
+              longer.
+            </Card.Text>
+            <Card.Text>
+              <Badge className="bg-dark mx-1">Algorithm</Badge>
+              <Badge className="bg-dark mx-1">Python</Badge>
+            </Card.Text>
+            <Card.Text className="text-end small text-muted">
+              255 answers, 18 test cases
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
+        </Card>
+        <Card as={Col} className="d-none d-lg-block mx-3 p-0">
+          <Card.Body>
+            <Card.Title>Card title</Card.Title>
+            <Card.Text>
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </Card.Text>
+            <Card.Text>
+              <Badge className="bg-dark mx-1">Algorithm</Badge>
+              <Badge className="bg-dark mx-1">Python</Badge>
+            </Card.Text>
+            <Card.Text className="text-end small text-muted">
+              255 answers, 18 test cases
+            </Card.Text>
+          </Card.Body>
         </Card>
       </CardDeck>
       <Row>
@@ -67,94 +77,51 @@ const MainPage = (props) => {
           <Row className="mb-2">
             <h5>All Questions</h5>
           </Row>
-          <ButtonGroup aria-label="Basic example">
-            <Button variant="secondary">Left</Button>
-            <Button variant="secondary">Middle</Button>
-            <Button variant="secondary">Right</Button>
-          </ButtonGroup>
+          <TagGroup
+            tags={[
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "List", count: 11 },
+              { name: "Linked", count: 11 },
+              { name: "Python", count: 23 },
+              { name: "Java", count: 2 },
+              { name: "Cpp", count: 23 },
+              { name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+              { name: "Python", count: 23 },
+              { isSelected: true, name: "Algorithm", count: 54 },
+            ]}
+          />
+          <SortBy />
           <CardColumns>
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
+            <Card className="rounded-0 border-top-0 border-start-0 border-end-0 ">
               <Card.Body>
-                <Card.Title>Card title that wraps to a new line</Card.Title>
+                <Card.Title>How to create a mock</Card.Title>
                 <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This card has even longer
+                  content than the first to show that equal height action.
+                </Card.Text>
+                <Badge className="bg-dark mx-1">Algorithm</Badge>
+                <Badge className="bg-dark mx-1">Python</Badge>
+                <Card.Text className="text-end text-muted">
+                  <small>
+                    Asked by <a href="/">user42</a>
+                  </small>
+                  <br /> <small>Last updated 3 mins ago</small>
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card className="p-3">
-              <blockquote className="blockquote mb-0 card-body">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.
-                </p>
-                <footer className="blockquote-footer">
-                  <small className="text-muted">
-                    Someone famous in{" "}
-                    <cite title="Source Title">Source Title</cite>
-                  </small>
-                </footer>
-              </blockquote>
-            </Card>
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.{" "}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card bg="primary" text="white" className="text-center p-3">
-              <blockquote className="blockquote mb-0 card-body">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.
-                </p>
-                <footer className="blockquote-footer">
-                  <small className="text-muted">
-                    Someone famous in{" "}
-                    <cite title="Source Title">Source Title</cite>
-                  </small>
-                </footer>
-              </blockquote>
-            </Card>
-            <Card className="text-center">
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.{" "}
-                </Card.Text>
-                <Card.Text>
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card>
-              <Card.Img src="holder.js/100px160" />
-            </Card>
-            <Card className="text-end">
-              <blockquote className="blockquote mb-0 card-body">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.
-                </p>
-                <footer className="blockquote-footer">
-                  <small className="text-muted">
-                    Someone famous in{" "}
-                    <cite title="Source Title">Source Title</cite>
-                  </small>
-                </footer>
-              </blockquote>
-            </Card>
-            <Card className="rounded-0">
+            <Card className="rounded-0 border-top-0 border-start-0 border-end-0 ">
               <Card.Body>
                 <Card.Title>How to create a mock</Card.Title>
                 <Card.Text>
@@ -175,7 +142,25 @@ const MainPage = (props) => {
           </CardColumns>
         </Col>
         <Col lg={4} className="d-none d-lg-block">
-          nkjknknjkjnkjn
+          <Card className="mx-1 p-0 mb-4">
+            <Card.Body>
+              <Card.Title>Trending</Card.Title>
+              <Card.Text>1</Card.Text>
+              <Card.Text>2</Card.Text> <Card.Text>3</Card.Text>
+              <Card.Text>4</Card.Text> <Card.Text>6</Card.Text>
+              <Card.Text>7</Card.Text> <Card.Text>8</Card.Text>
+            </Card.Body>
+          </Card>
+          <Card className="mx-1 p-0 border-0 bg-">
+            <Card.Img src={logo} className="p-5" />
+          </Card>
+          <Card className="mx-1 p-0">
+            <Card.Body>
+              <Card.Title>Contect Me</Card.Title>
+              <Card.Text>Email: guosidney@gmail.com</Card.Text>
+              <Card.Text>Linkedin: guoqikai</Card.Text>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
