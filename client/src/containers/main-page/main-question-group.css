@@ -1,0 +1,17 @@
+.main-question-group-enter {
+  opacity: 0;
+}
+
+.main-question-group-enter.main-question-group-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.main-question-group-leave {
+  opacity: 1;
+}
+
+.main-question-group-leave.main-question-group-leave-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}

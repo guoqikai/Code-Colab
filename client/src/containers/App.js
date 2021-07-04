@@ -3,8 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './navbar'
 import MainPage from "./main-page";
 
-import './App.css'
-
 
 
 function App() {

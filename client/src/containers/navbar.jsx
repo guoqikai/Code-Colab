@@ -1,6 +1,6 @@
 import { Navbar, Nav, Image, Dropdown, Spinner, ProgressBar } from "react-bootstrap";
-import logo from "../common/assets/logo.png";
-import defaultUserPic from "../common/assets/user.png";
+import logo from "../assets/logo.png";
+import defaultUserPic from "../assets/user.png";
 
 const AppNavBar = ({isLogin, userProfilePic,  }) => {
   return (

@@ -1,0 +1,13 @@
+.colab-tag {
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0);;
+}
+
+.colab-tag:hover {
+    border: 1px solid black;
+}
+
+.colab-tag-nonselect {
+    cursor: default;
+}
