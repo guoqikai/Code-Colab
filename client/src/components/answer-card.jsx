@@ -1,0 +1,6 @@
+ 
+const AnswerCard = () => {
+    <div>
+        
+    </div>
+}

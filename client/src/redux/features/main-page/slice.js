@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { searchQuestions } from "../../../common/API/question";
+import { searchQuestions } from "../../../common/api/question";
 
 export const search = createAsyncThunk(
   "mainPage/searchQuestions",

@@ -9,6 +9,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { mainPageActions } from "../../redux/actions";
 import { mainPageSelectors } from "../../redux/selectors";
+import { SecondaryButton, SwitchButton } from "../../components/buttons";
 
 const ToolBar = () => {
   const [searchString, setSearchString] = useState("");
@@ -17,34 +18,31 @@ const ToolBar = () => {
   return (
     <ButtonToolbar className="justify-content-between">
       <ButtonGroup>
-        <Button
-          variant="outline-dark"
-          className={sortby === "hot" ? "colab-bg-green text-dark" : ""}
+        <SwitchButton
+          isSelected={sortby === "hot"}
           onClick={() => dispatch(mainPageActions.updateSortBy("hot"))}
         >
           Hot
-        </Button>
-        <Button
-          variant="outline-dark"
-          className={sortby === "newest" ? "colab-bg-green text-dark" : ""}
+        </SwitchButton>
+        <SwitchButton
+          isSelected={sortby === "newest"}
           onClick={() => dispatch(mainPageActions.updateSortBy("newest"))}
         >
           Newest
-        </Button>
-        <Button
-          variant="outline-dark"
-          className={sortby === "Top" ? "colab-bg-green text-dark" : ""}
+        </SwitchButton>
+        <SwitchButton
+          isSelected={sortby === "Top"}
           onClick={() => dispatch(mainPageActions.updateSortBy("Top"))}
         >
           Top
-        </Button>
+        </SwitchButton>
       </ButtonGroup>
 
       <InputGroup>
         <FormControl
           type="text"
           placeholder="Search"
-          className="border-dark"
+          className="border border-right-0 focus-light"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
           onKeyDown={(e) => {
@@ -54,14 +52,14 @@ const ToolBar = () => {
           }}
         />
         <InputGroup.Append>
-          <Button
-            variant="outline-dark"
+          <SecondaryButton
+            className="border border-left-0"
             onClick={() =>
               dispatch(mainPageActions.updateSearchString(searchString))
             }
           >
-            Search
-          </Button>
+            <i className="bi bi-search" />
+          </SecondaryButton>
         </InputGroup.Append>
       </InputGroup>
     </ButtonToolbar>

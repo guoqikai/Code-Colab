@@ -1,12 +1,22 @@
-import { Navbar, Nav, Image, Dropdown, Spinner, ProgressBar } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Image,
+  Dropdown,
+  Spinner,
+  ProgressBar,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import defaultUserPic from "../assets/user.png";
 
-const AppNavBar = ({isLogin, userProfilePic,  }) => {
+const AppNavBar = ({ isLogin, userProfilePic }) => {
   return (
     <Navbar bg="light" sticky="top">
-      <Navbar.Brand className="py-2 px-3" href="/">
-        <Image src={logo} height="32" />
+      <Navbar.Brand className="py-2 px-3">
+        <Link to="/">
+          <Image src={logo} height="32" />
+        </Link>
       </Navbar.Brand>
 
       <Navbar.Collapse className="justify-content-end">

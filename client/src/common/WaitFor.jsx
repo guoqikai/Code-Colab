@@ -3,7 +3,7 @@ import { useState, useEffect, createElement } from "react";
 const WaitFor = ({ resovle, fallback, render }) => {
   const [resovledValue, setResovledValue] = useState(null);
   useEffect(() => {
-    resovle().then((props) => setResovledValue(props));
+    resovle.then((props) => setResovledValue(props));
   }, [resovle]);
 
   if (resovledValue !== null)

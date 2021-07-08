@@ -1,4 +1,5 @@
 import { Pagination as BootsTrapPagination } from "react-bootstrap";
+import classNames from "classnames";
 import "./pagination.css";
 
 const calculatePageRange = (page, maxPage, numPageItems) => {
@@ -42,7 +43,7 @@ const Pagination = ({
   onClick,
   className,
 }) => (
-  <BootsTrapPagination className={"app-pagination " + className}>
+  <BootsTrapPagination className={classNames("app-pagination", className)}>
     <BootsTrapPagination.Prev onClick={() => onClick(Math.max(page - 1, 1))} />
     {calculatePageRange(page, maxPage, numPageItems).map((p, index) =>
       p === "..." ? (

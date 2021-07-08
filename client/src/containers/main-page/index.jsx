@@ -6,8 +6,8 @@ import {
   CardDeck,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { fecthTopQuestions } from "../../common/API/question";
-import { getAllTags } from "../../common/API/tag";
+import { fecthTopQuestions } from "../../common/api/question";
+import { getAllTags } from "../../common/api/tag";
 import Tag from "../../components/tag";
 
 import logo from "../../assets/logo-big.png";
@@ -51,7 +51,9 @@ const MainPage = ({ topQuestions, tags, trending }) => {
   return (
     <Container className="py-5">
       <Row className="mb-2">
-        <h4>Top Questions</h4>
+        <Col>
+          <h4>Top Questions</h4>
+        </Col>
       </Row>
       <CardDeck className="justify-content-center mb-5">
         <Card className="mx-3 px-0">
@@ -67,20 +69,22 @@ const MainPage = ({ topQuestions, tags, trending }) => {
       <Row>
         <Col lg={8} md>
           <Row className="mb-2">
-            <MainQuestionGroupHeader />
+            <Col>
+              <MainQuestionGroupHeader />
+            </Col>
           </Row>
           <Row className="my-2">
             <Col>
               <TagGroup tags={tags} />
             </Col>
           </Row>
-          <Row className="mt-3 mb-1 mx-1">
+          <Row className="mt-4 mx-1">
             <Col>
               <ToolBar />
             </Col>
           </Row>
-          <MainQuestionGroup />
-          <MainPagination className="mt-4" />
+          <MainQuestionGroup/>
+          <MainPagination className="mt-2" />
         </Col>
         <Col lg={4} className="d-none d-lg-block">
           <Card className="mx-1 p-0 mb-4 coontent-center">
@@ -105,11 +109,11 @@ const MainPage = ({ topQuestions, tags, trending }) => {
 };
 
 const MainPageWithData = () => (
-  <WaitFor resovle={async () => {
+  <WaitFor resovle={(async () => {
     const topQuestions = await fecthTopQuestions();
     const tags = await getAllTags()
     return {topQuestions, tags}
-  }} render={MainPage}>
+  })()} render={MainPage}>
   </WaitFor>
 );
 

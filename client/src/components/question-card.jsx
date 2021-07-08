@@ -12,10 +12,10 @@ const QuestionCard = ({
   datePost,
   _id
 }) => (
-  <Card className="rounded-0 border-dark border-top-0 border-right-0 border-left-0">
+  <Card className="rounded-0 border-0">
     <Card.Body>
       <Card.Title>
-        <Link to={"question/" + _id} className="text-dark">
+        <Link to={"/question/" + _id} className="text-dark">
           {questionTitle}
         </Link>
       </Card.Title>
