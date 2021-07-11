@@ -109,11 +109,11 @@ const MainPage = ({ topQuestions, tags, trending }) => {
 };
 
 const MainPageWithData = () => (
-  <WaitFor resovle={(async () => {
+  <WaitFor resolve={(async () => {
     const topQuestions = await fecthTopQuestions();
     const tags = await getAllTags()
     return {topQuestions, tags}
-  })()} render={MainPage}>
+  })} render={MainPage} pending={"waiting"}>
   </WaitFor>
 );
 

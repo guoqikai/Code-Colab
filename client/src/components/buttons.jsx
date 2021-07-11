@@ -22,11 +22,11 @@ export const SwitchButton = ({ isSelected, ...props }) => (
     {...props}
     variant="outline-light"
     className={classNames(
-      "rounded-0 border-0 focus-light",
+      "border focus-light",
       {
-        "colab-bg-green bg-transparent font-weight-bold text-white":
-          props.isSelected,
-        "text-muted": !props.isSelected,
+        "bg-secondary font-weight-bold text-white":
+          isSelected,
+        "text-muted": !isSelected,
       },
       props.className
     )}

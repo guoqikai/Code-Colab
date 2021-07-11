@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   Navbar,
   Nav,
@@ -9,18 +10,22 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import defaultUserPic from "../assets/user.png";
+import { userSelectors } from "../redux/selectors";
 
-const AppNavBar = ({ isLogin, userProfilePic }) => {
+const AppNavBar = () => {
+  const isLoggedIn = useSelector(userSelectors.selectLoggedIn);
+  const username = useSelector(userSelectors.selectName);
+  const profilePic = useSelector(userSelectors.selectProfilePic);
   return (
-    <Navbar bg="light" sticky="top">
+    <Navbar bg="light" sticky="top" className="py-1">
       <Navbar.Brand className="py-2 px-3">
         <Link to="/">
-          <Image src={logo} height="32" />
+          <Image src={logo} height="30" />
         </Link>
       </Navbar.Brand>
 
       <Navbar.Collapse className="justify-content-end">
-        {!isLogin ? (
+        {isLoggedIn ? (
           <>
             <Nav>
               <Dropdown as={Nav.Item}>
@@ -44,10 +49,10 @@ const AppNavBar = ({ isLogin, userProfilePic }) => {
 
             <Dropdown className="px-3">
               <Dropdown.Toggle as={Nav.Link} bsPrefix="p-0">
-                <Image src={userProfilePic || defaultUserPic} height="32" />
+                <Image src={profilePic || defaultUserPic} height="30" />
               </Dropdown.Toggle>
               <Dropdown.Menu alignRight>
-                <Dropdown.Header>User01</Dropdown.Header>
+                <Dropdown.Header>{username}</Dropdown.Header>
                 <Dropdown.Divider />
                 <Dropdown.Item>My Profile</Dropdown.Item>
                 <Dropdown.Item>Log out</Dropdown.Item>
@@ -56,7 +61,7 @@ const AppNavBar = ({ isLogin, userProfilePic }) => {
           </>
         ) : (
           <Nav className="px-3">
-            <Nav.Link to="/login">Log in/Sign Up</Nav.Link>
+            <Nav.Link as={Link} to="/login">Log in/Sign Up</Nav.Link>
           </Nav>
         )}
       </Navbar.Collapse>

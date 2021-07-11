@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { searchQuestions } from "../../../common/api/question";
 
 export const search = createAsyncThunk(
-  "mainPage/searchQuestions",
-  async (_, thunkAPI) => {
-    const { page, sortBy, tags, searchString } = thunkAPI.getState().mainPage;
+  "mainPage/search",
+  async (_, { getState }) => {
+    const { page, sortBy, tags, searchString } = getState().mainPage;
     return searchQuestions(page, sortBy, tags, searchString);
   }
 );
@@ -22,45 +22,41 @@ const mainPageSlice = createSlice({
   },
   reducers: {
     updateSearchString: (state, action) => {
-      if (!state.loading) {
-        state.searchString = action.payload.slice(0, 30);
-        state.page = 1;
-      };
+      state.searchString = action.payload.slice(0, 30);
+      state.page = 1;
     },
     updateSortBy: (state, action) => {
-      if (!state.loading) {
-        state.sortBy = action.payload;
-        state.page = 1;
-      };
+      state.sortBy = action.payload;
+      state.page = 1;
     },
     updatePage: (state, action) => {
-      if (!state.loading) state.page = action.payload;
+      state.page = action.payload;
     },
     updateTag: (state, action) => {
       const tag = action.payload;
-      if (!state.loading) {
-        if (state.tags.includes(tag))
-          state.tags = state.tags.filter((t) => t !== tag);
-        else state.tags.push(tag);
-        state.page = 1;
-      }
+      if (state.tags.includes(tag))
+        state.tags = state.tags.filter((t) => t !== tag);
+      else state.tags.push(tag);
+      state.page = 1;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(search.fulfilled, (state, action) => {
-      state.questions = action.payload.questions;
-      state.maxPage = action.payload.maxPage;
-      state.page = action.payload.page;
+      const {questions, maxPage, page} = action.payload;
+      state.questions = questions;
+      state.maxPage = maxPage;
+      state.page = page;
       state.loading = false;
     });
-    builder.addCase(search.pending, (state, action) => {
+    builder.addCase(search.pending, (state) => {
       state.loading = true;
     });
   },
 });
 
 const bindActionCreatorWithFetch =
-  (actionCreator) => (payload) => (dispatch) => {
+  (actionCreator) => (payload) => (dispatch, getState) => {
+    if (getState().loading) return;
     dispatch(actionCreator(payload));
     dispatch(search());
   };

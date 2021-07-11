@@ -12,8 +12,6 @@ code {
     monospace;
 }
 
-
-
 .dropdown-toggle-no-caret:after {
   display: none;
 }
@@ -26,15 +24,46 @@ code {
   color: #5cb85c !important;
 }
 
+.colab-bg-blue {
+  background-color: #5c8ab8 !important;
+}
+
+.colab-blue {
+  color: #5c8ab8 !important;
+}
+
+.colab-bg-warning {
+  background-color: #fff4d6;
+}
+
+.colab-warning {
+  color: #6e5100;
+}
+
+.colab-bg-error {
+  background-color: #ffe3e3;
+}
+
+.colab-error {
+  color: #ff0000;
+}
+
+.colab-bg-success {
+  background-color: #e0ffe0;
+}
+
+.colab-success {
+  color: #007700;
+}
+
 .colab-border-green {
   border-color: #5cb85c !important;
 }
 
 .focus-light:focus {
-  border-color:rgb(0 0 0 / 10%) !important;
+  border-color: rgb(0 0 0 / 10%) !important;
   box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 10%) !important;
 }
-
 
 .focus-min:focus {
   box-shadow: none !important;
@@ -52,7 +81,6 @@ code {
 .icon-lg {
   font-size: 2rem;
 }
-
 
 .text-md {
   font-size: 90%;

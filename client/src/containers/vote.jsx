@@ -1,17 +1,34 @@
-import { useState } from "react";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { Container, Row } from "react-bootstrap";
 import classNames from "classnames";
-import useSafeAsyncCallbacks, {forward} from "../common/hooks/useSafeAsync";
+import { userActions } from "../redux/actions";
+import { userSelectors } from "../redux/selectors";
+import useToaster from "../common/hooks/useToaster";
 
-// Both onUpvoteClick and onDownvoteClick should be async function, number of upvote will be updated when the proomise is resolved.
-const Vote = ({ numUpvote, onUpvoteClick, onDownvoteClick }) => {
-  // 1 when upvoted, -1 when downvoted.
-  const [voteState, setVoteState] = useState(0);
-  const callBackGroup = useSafeAsyncCallbacks({onUpvoteClick, onDownvoteClick})[0];
+const Vote = ({ subjectType, subjectId, numVotes, updateNumVotes }) => {
+  const store = useStore();
+  const { isUpvote } = useSelector((state) =>
+    userSelectors.selectVote(state, subjectId)
+  ) || {};
+  const dispatch = useDispatch();
+  const toaster = useToaster();
 
-  const isUpvote = voteState === 1;
-  const isDownvote = voteState === -1;
-
+  const handleVote = (isUpvote) => {
+    if (!userSelectors.selectLoggedIn(store.getState())) {
+      toaster.makeToastWithId(
+        "login",
+        "login",
+        "You need to loggin to vote on the " +
+          subjectType.replace(/([A-Z])/g, " $1").toLowerCase() +
+          "."
+      );
+      return;
+    }
+    dispatch(userActions.vote({ isUpvote, subjectType, subjectId }))
+      .unwrap()
+      .then(({numVotes}) => updateNumVotes(numVotes))
+      .catch(err => {toaster.makeToastWithId("vote", "error", err.toString())});
+  };
 
   return (
     <Container fluid>
@@ -22,36 +39,20 @@ const Vote = ({ numUpvote, onUpvoteClick, onDownvoteClick }) => {
             "bi-caret-up-fill colab-green ": isUpvote,
             "bi-caret-up": !isUpvote,
           })}
-          onClick={() =>
-            callBackGroup
-              .onUpvoteClick()
-              .then((val, err) => {
-                if (!err) setVoteState(isUpvote ? 0 : 1);
-                forward(val, err);
-              })
-              .catch((err) => {console.log(err)})
-          }
+          onClick={() => handleVote(true)}
         ></i>
       </Row>
       <Row className="justify-content-center">
-        <h5 className="m-0">{parseInt(numUpvote) + voteState}</h5>
+        <h5 className="m-0">{numVotes}</h5>
       </Row>
       <Row className="justify-content-center">
         <i
           role="button"
           className={classNames("bi icon-md", {
-            "bi-caret-down-fill colab-green ": isDownvote,
-            "bi-caret-down": !isDownvote,
+            "bi-caret-down-fill colab-green ": isUpvote === false,
+            "bi-caret-down": isUpvote !== false,
           })}
-          onClick={() =>
-            callBackGroup
-              .onDownvoteClick()
-              .then((val, err) => {
-                if (!err) setVoteState(isDownvote ? 0 : -1);
-                forward(val, err);
-              })
-              .catch((err) => {})
-          }
+          onClick={() => handleVote(false)}
         ></i>
       </Row>
     </Container>

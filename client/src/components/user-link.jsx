@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import classNames from "classnames";
 
-const UserLink = ({ name, _id, className }) => (
-  <Link to={"/user/" + _id} className={classNames("text-info", className)}>
-    {name}
+const UserLink = ({ userInfo, className }) => (
+  <Link to={"/user/" + userInfo._id} className={className}>
+    {userInfo.name}
   </Link>
 );
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   ButtonGroup,
   ButtonToolbar,
-  Button,
   InputGroup,
   FormControl,
 } from "react-bootstrap";

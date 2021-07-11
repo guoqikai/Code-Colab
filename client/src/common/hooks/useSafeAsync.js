@@ -13,7 +13,7 @@ class SafeAsyncError extends Error {
   }
 }
 
-const useSafeAsyncCallbacks = (asyncCallbacks) => {
+export const useSafeAsyncCallbacks = (asyncCallbacks) => {
   const isMounted = useRef(false);
   const [isFetching, setFetching] = useState(false);
   useEffect(() => {
@@ -50,8 +50,12 @@ const useSafeAsyncCallbacks = (asyncCallbacks) => {
   ];
 };
 
+export const useSafeAsyncCallback = (asyncCallback) =>{ 
+    const cbGroup = useSafeAsyncCallbacks({cb: asyncCallback});
+    return [cbGroup[0].cb, cbGroup[1]];
+}
+
 export const forward = (val, err) => {
   throw new SafeAsyncError("forwarded", [val, err]);
 };
 
-export default useSafeAsyncCallbacks;

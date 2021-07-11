@@ -4,7 +4,7 @@ import Vote from "../vote";
 import TestCaseGroup from "./test-case-group";
 
 const QuestionDetailPage = ({ questionTitle, questionDesc }) => (
-  <Container className="py-5">
+  <Container className="py-4">
     <Row>
       <Col>
         <h4>Question Title {questionTitle}</h4>
@@ -14,7 +14,7 @@ const QuestionDetailPage = ({ questionTitle, questionDesc }) => (
     <Row>
       <Col xs={1}>
         <Vote
-          numUpvote={0}
+          numVotes={0}
           onDownvoteClick={() =>
             new Promise((resolve, reject) => {
               setTimeout(() => resolve(), 2000);
@@ -57,7 +57,6 @@ const QuestionDetailPage = ({ questionTitle, questionDesc }) => (
       className="my-2"
       defaultActiveKey="test-cases"
       transition={false}
-      id="noanim-tab-example"
     >
       <Tab eventKey="test-cases" title="Test Cases" tabClassName="text-dark">
         <TestCaseGroup />
