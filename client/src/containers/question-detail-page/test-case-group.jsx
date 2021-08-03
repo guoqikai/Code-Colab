@@ -35,21 +35,7 @@ const TestCaseGroup = () => {
             inputs: [],
             expectedOutput: "Hello",
           }}
-          comments={[
-            {
-              replydTo: "user43dasd",
-              comment: "hello!",
-              _id: 1,
-              userInfo: { _id: 12, name: "user42" },
-            },
-            {
-              replyTo: "user42",
-              comment: "hello!",
-              userInfo: { _id: 12, name: "user43" },
-              _id: 2,
-              date: new Date().toLocaleString(),
-            },
-          ]}
+        
           numVotes={2}
         />
       </div>
@@ -65,21 +51,7 @@ const TestCaseGroup = () => {
             inputs: [],
             expectedOutput: "Hello",
           }}
-          comments={[
-            {
-              replydTo: "user43dasd",
-              comment: "hello!",
-              _id: 1,
-              userInfo: { _id: 12, name: "user42" },
-            },
-            {
-              replyTo: "user42",
-              comment: "hello!",
-              userInfo: { _id: 12, name: "user43" },
-              _id: 2,
-              date: new Date().toLocaleString(),
-            },
-          ]}
+         
           numVotes={2}
         />
       </div>

@@ -8,7 +8,7 @@ const reasonDesc = {
 
 class SafeAsyncError extends Error {
   constructor(reason, payLoad) {
-    super("useSafeAsyncCallbacks: " + reasonDesc[reason]);
+    super(payLoad[1] ? payLoad[1].toString() : "useSafeAsyncCallbacks: " + reasonDesc[reason]);
     this.payLoad = payLoad;
   }
 }
@@ -50,12 +50,11 @@ export const useSafeAsyncCallbacks = (asyncCallbacks) => {
   ];
 };
 
-export const useSafeAsyncCallback = (asyncCallback) =>{ 
-    const cbGroup = useSafeAsyncCallbacks({cb: asyncCallback});
-    return [cbGroup[0].cb, cbGroup[1]];
-}
-
-export const forward = (val, err) => {
-  throw new SafeAsyncError("forwarded", [val, err]);
+export const useSafeAsyncCallback = (asyncCallback) => {
+  const cbGroup = useSafeAsyncCallbacks({ cb: asyncCallback });
+  return [cbGroup[0].cb, cbGroup[1]];
 };
 
+export const forward = ([val, err]) => {
+  if (val || err) throw new SafeAsyncError("forwarded", [val, err]);
+};

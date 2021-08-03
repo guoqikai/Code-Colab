@@ -1,4 +1,3 @@
-import { Card } from "react-bootstrap";
 import UserLink from "./user-link";
 
 const CommentCard = ({ replyTo, comment, userInfo, date, onReplyClick }) => (
