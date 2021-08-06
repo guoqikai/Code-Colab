@@ -1,7 +1,7 @@
-# CotLang - Language for Code Testing in CodeColab
+# CotLang - A Script Language for Code Testing
 
 ## Introduction
-CotLang is designed for writing testing script that could be applied to all languages supported by CodeColab. The language has a Python like, very readable syntax while only support a relatively small subset of features. 
+CotLang is designed for writing testing script that could be applied to all languages supported by Code Colab. The language has a Python like, very readable syntax while only support a relatively small subset of features. 
 
 ## Features 
 CotLang supports 6 primitive types: char, int, float, double, bool, and string.
