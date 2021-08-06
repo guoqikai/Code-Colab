@@ -7,12 +7,12 @@ The ultimate goal of this application is to create a forum where people can disc
 Users can upvote/downvote questions, solutions, and test cases. If they think a test case does not make any sense, he can skip that test case and downvote it. Similarly, if they think a question is poorly worded or a solution is incorrect, he can downvote them as well.    
 
 ## Go to
-[Sand box environment for running user's code](#Sandbox-Environment)   
+[The SandBox](#Browser-As-A-Sandbox-Environment)   
 [How does this thing work?](#How-This-Whole-Thing-Works)   
 [POC V1](#About-POC-V1) (Completed and deployed on Heroku so you can try it out!)   
 [POC V2](#About-POC-V2) (Currently developing)
 
-## Browser as Sandbox Environment
+## Browser as A Sandbox Environment
 Most web applications that allow users to execute code (like Leetcode, GeekforGeek) works in the following way: 
   * When users click the run button, the server will create a sandbox environment for the particular user.  
   * User's solution will then be executed in the sandbox environment
