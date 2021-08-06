@@ -7,12 +7,12 @@ The ultimate goal of this application is to create a forum where people can disc
 Users can upvote/downvote questions, solutions, and test cases. If they think a test case does not make any sense, he can skip that test case and downvote it. Similarly, if they think a question is poorly worded or a solution is incorrect, he can downvote them as well.    
 
 ## Go to
-[Sand box environment for running user's code](#Sandbox-Environment)   
+[The SandBox](#Browser-As-A-Sandbox-Environment)   
 [How does this thing work?](#How-This-Whole-Thing-Works)   
 [POC V1](#About-POC-V1) (Completed and deployed on Heroku so you can try it out!)   
 [POC V2](#About-POC-V2) (Currently developing)
 
-## Browser as Sandbox Environment
+## Browser as A Sandbox Environment
 Most web applications that allow users to execute code (like Leetcode, GeekforGeek) works in the following way: 
   * When users click the run button, the server will create a sandbox environment for the particular user.  
   * User's solution will then be executed in the sandbox environment
@@ -42,9 +42,9 @@ The major implementation challenge is to not only make the same test case execut
 Another challenge is to avoid unnecessary recompilation since code is compiled on the server side. Users' code should only be recompiled when they modify the code but neither when users add new test cases nor execute existing test cases.
 
 ### The Code Execution/Testing Framework
-To decouple test cases from a specific programming language, and avoiding recompilation when new test cases are added, the application comes with a simple, strict typed language called [CotLang]() for writing test script and an interpreter that can execute the language in the browser.
+To decouple test cases from a specific programming language, and avoiding recompilation when new test cases are added, the application comes with a simple, strict typed language called [CotLang](./cotlang) for writing test script and an interpreter that can execute the language in the browser.
 
-When user posts a question, he'll need to specify entry points of the question, that is, functions the testing framework may invoke. For each entry point, user needs to specify the number of inputs, input types, and return types. He might also include files, helper functions, specifying programming language, adding starter code, configuring the compiler, and so on. The process can be done by filling out a form but it will ultimately convert to an XML file that stores all the configuration (I'll call it `configuration file` in this section).
+When user posts a question, he'll need to specify entry points of the question, that is, functions the testing framework may invoke. For each entry point, user needs to specify the number of inputs, input types, and return types. He might also include files, helper functions, specifying programming language, adding starter code, configuring the compiler, and so on. The process can be done by filling out a form but it will ultimately convert to an XML file that stores all the configuration (I'll call it `configuration file` in following sections).
 
 Similarly, users can add test cases by either writing a CotLang script directly or filling out a form, which will later be transpiled to a CotLang script as well. Before user submits a test case, the application will perform semantic analysis to make sure all types are matched and functions are called in the correct way using the configuration file.
 
@@ -75,17 +75,29 @@ As mentioned, the app has a parser that parse test case input to Python or C syn
 
 ### Navigate the app
 
-After landing on the main page of the application. Users can click **Sign in/Sign up** button to log in or create a new account. Enter the information and sign up for an account. (sign-up)
+After landing on the main page of the application. Users can click **Sign in/Sign up** button to log in or create a new account. Enter the information and sign up for an account.
 
-Users can add a question by clicking on the **New Question** button, and then enter the name, description, function name, input parameters, and output. Nested generic type declaration is supported, including for the input parameters and return value. There is no restriction on the depth of data structures. (add-question)
+https://user-images.githubusercontent.com/56366125/128462404-8e7bc084-a4a1-452d-8a28-eedc6d1d3ee1.mov
 
-On the second page, users are asked to create test cases for the question. The test case input parameters and output must match the data structure provided on the previous page. Mismatches and syntax errors will be detected on submission. After creating the question and test cases, the question will appear at the bottom of the question list. (add-test-case)
+Users can add a question by clicking on the **New Question** button, and then enter the name, description, function name, input parameters, and output. Nested generic type declaration is supported, including for the input parameters and return value. There is no restriction on the depth of data structures. 
 
-Users can explore and answer questions by clicking on the question cards. On the question details page, the question description, answers from other users, and test cases are shown. Users can add a new test case to the question by clicking on the **Add** button on the **Test cases** page. They can write their solution by clicking on the **Add Answers** button on **Answers** page, which will open the editor. In this version, only Python is supported. Users can select the test cases they want to run, and then click (question-page)
+https://user-images.githubusercontent.com/56366125/128462429-6d87b155-42e7-4e31-a30c-c321c877d389.mp4
 
-There are two types of errors, syntax error and runtime error. (code-error)
+On the second page, users are asked to create test cases for the question. The test case input parameters and output must match the data structure provided on the previous page. Mismatches and syntax errors will be detected on submission. After creating the question and test cases, the question will appear at the bottom of the question list. 
 
-When tests are completed, users can check their passing and failing tests with the actual outputs and expected outputs. They can also check out any of their history versions of code. After submitting answers, they will be returned to the **Answers** page of the question. (passing-and-failing-test-case)
+https://user-images.githubusercontent.com/56366125/128462446-d67e2ebe-df95-4a9f-979f-f7f7cf0c6ff1.mp4
+
+Users can explore and answer questions by clicking on the question cards. On the question details page, the question description, answers from other users, and test cases are shown. Users can add a new test case to the question by clicking on the **Add** button on the **Test cases** page. They can write their solution by clicking on the **Add Answers** button on **Answers** page, which will open the editor. In this version, only Python is supported. Users can select the test cases they want to run, and then click the run test button.
+
+https://user-images.githubusercontent.com/56366125/128462484-bfafe432-dd5d-4dc7-ad40-b41d21e759c1.mp4
+
+The starter code is generate automatically and user can modify the function body directly. There are two types of errors, syntax error and runtime error. A syntax error will fail all test cases while runtime error won't.
+
+https://user-images.githubusercontent.com/56366125/128462494-f434a10c-2a57-4b5b-9814-96434b288d31.mp4
+
+When tests are completed, users can check their passing and failing tests with the actual outputs and expected outputs. They can also check out any of their history versions of code. After submitting answers, they will be returned to the **Answers** page of the question. 
+
+https://user-images.githubusercontent.com/56366125/128462525-68290547-2db4-4c05-8a83-fb7d7554208d.mp4
 
 ## About POC V2
 I decide to rewrite/restructure the whole application because of the following reasons:

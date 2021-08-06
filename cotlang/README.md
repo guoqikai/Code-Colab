@@ -1,7 +1,7 @@
-# CotLang - Language for Code Testing in CodeColab
+# CotLang - A Script Language for Code Testing
 
 ## Introduction
-CotLang is designed for writing testing script that could be applied to all languages supported by CodeColab. The language has a Python like, very readable syntax while only support a relatively small subset of features. 
+CotLang is designed for writing testing script that could be applied to all languages supported by Code Colab. The language has a Python like, very readable syntax while only support a relatively small subset of features. 
 
 ## Features 
 CotLang supports 6 primitive types: char, int, float, double, bool, and string.
@@ -65,14 +65,14 @@ else:
     print(3)
 ```
 
-Function definition is not supported, user can import functions and classes they declared in their source code. 
+Function definition is not supported, user can import functions and classes they declared in the configuration file. 
 ```Java
 //Objects import from user's code
 user_defined_obj = MyObject()
 user_defined_container_obj = MyContainer<MyObject>()
 print(user_defined_container.someMethod())
 ``` 
-There are three keywords for debugging and tracking user's code: print, trace, and expect. The following example demonstrate some use cases of them. Let's say we the user is writing a program that computes sum of two number. The program is written in python:
+There are three keywords for debugging and tracking user's code: print, trace, and expect. The following example demonstrate some use cases of them. Let's say the user is writing a program that computes sum of two number. The program is written in python:
 ```Python
 def my_sum(num1, num2):
     if num2 == 2:
@@ -83,8 +83,7 @@ Clearly the user made a non-sense mistake. The user then run a test script submi
 ```Java
 for num1 from 0 to 999:
     for num2 from 0 to 999:
-        trace num1
-        trace num2
+        trace(num1, num2)
         print("current sum:" + (num1 + num2))
         expect my_sum(num1, num2) == num1 + num2 
 ```
