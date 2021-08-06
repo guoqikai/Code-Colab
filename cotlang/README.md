@@ -65,7 +65,7 @@ else:
     print(3)
 ```
 
-Function definition is not supported, user can import functions and classes they declared in their source code. 
+Function definition is not supported, user can import functions and classes they declared in the configuration file. 
 ```Java
 //Objects import from user's code
 user_defined_obj = MyObject()
