@@ -72,7 +72,7 @@ user_defined_obj = MyObject()
 user_defined_container_obj = MyContainer<MyObject>()
 print(user_defined_container.someMethod())
 ``` 
-There are three keywords for debugging and tracking user's code: print, trace, and expect. The following example demonstrate some use cases of them. Let's say we the user is writing a program that computes sum of two number. The program is written in python:
+There are three keywords for debugging and tracking user's code: print, trace, and expect. The following example demonstrate some use cases of them. Let's say the user is writing a program that computes sum of two number. The program is written in python:
 ```Python
 def my_sum(num1, num2):
     if num2 == 2:
@@ -83,8 +83,7 @@ Clearly the user made a non-sense mistake. The user then run a test script submi
 ```Java
 for num1 from 0 to 999:
     for num2 from 0 to 999:
-        trace num1
-        trace num2
+        trace(num1, num2)
         print("current sum:" + (num1 + num2))
         expect my_sum(num1, num2) == num1 + num2 
 ```
