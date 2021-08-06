@@ -42,7 +42,7 @@ The major implementation challenge is to not only make the same test case execut
 Another challenge is to avoid unnecessary recompilation since code is compiled on the server side. Users' code should only be recompiled when they modify the code but neither when users add new test cases nor execute existing test cases.
 
 ### The Code Execution/Testing Framework
-To decouple test cases from a specific programming language, and avoiding recompilation when new test cases are added, the application comes with a simple, strict typed language called [CotLang]() for writing test script and an interpreter that can execute the language in the browser.
+To decouple test cases from a specific programming language, and avoiding recompilation when new test cases are added, the application comes with a simple, strict typed language called [CotLang](./cotlang) for writing test script and an interpreter that can execute the language in the browser.
 
 When user posts a question, he'll need to specify entry points of the question, that is, functions the testing framework may invoke. For each entry point, user needs to specify the number of inputs, input types, and return types. He might also include files, helper functions, specifying programming language, adding starter code, configuring the compiler, and so on. The process can be done by filling out a form but it will ultimately convert to an XML file that stores all the configuration (I'll call it `configuration file` in this section).
 
