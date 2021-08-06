@@ -75,17 +75,29 @@ As mentioned, the app has a parser that parse test case input to Python or C syn
 
 ### Navigate the app
 
-After landing on the main page of the application. Users can click **Sign in/Sign up** button to log in or create a new account. Enter the information and sign up for an account. (sign-up)
+After landing on the main page of the application. Users can click **Sign in/Sign up** button to log in or create a new account. Enter the information and sign up for an account.
 
-Users can add a question by clicking on the **New Question** button, and then enter the name, description, function name, input parameters, and output. Nested generic type declaration is supported, including for the input parameters and return value. There is no restriction on the depth of data structures. (add-question)
+https://user-images.githubusercontent.com/56366125/128462404-8e7bc084-a4a1-452d-8a28-eedc6d1d3ee1.mov
 
-On the second page, users are asked to create test cases for the question. The test case input parameters and output must match the data structure provided on the previous page. Mismatches and syntax errors will be detected on submission. After creating the question and test cases, the question will appear at the bottom of the question list. (add-test-case)
+Users can add a question by clicking on the **New Question** button, and then enter the name, description, function name, input parameters, and output. Nested generic type declaration is supported, including for the input parameters and return value. There is no restriction on the depth of data structures. 
 
-Users can explore and answer questions by clicking on the question cards. On the question details page, the question description, answers from other users, and test cases are shown. Users can add a new test case to the question by clicking on the **Add** button on the **Test cases** page. They can write their solution by clicking on the **Add Answers** button on **Answers** page, which will open the editor. In this version, only Python is supported. Users can select the test cases they want to run, and then click (question-page)
+https://user-images.githubusercontent.com/56366125/128462429-6d87b155-42e7-4e31-a30c-c321c877d389.mp4
 
-There are two types of errors, syntax error and runtime error. (code-error)
+On the second page, users are asked to create test cases for the question. The test case input parameters and output must match the data structure provided on the previous page. Mismatches and syntax errors will be detected on submission. After creating the question and test cases, the question will appear at the bottom of the question list. 
 
-When tests are completed, users can check their passing and failing tests with the actual outputs and expected outputs. They can also check out any of their history versions of code. After submitting answers, they will be returned to the **Answers** page of the question. (passing-and-failing-test-case)
+https://user-images.githubusercontent.com/56366125/128462446-d67e2ebe-df95-4a9f-979f-f7f7cf0c6ff1.mp4
+
+Users can explore and answer questions by clicking on the question cards. On the question details page, the question description, answers from other users, and test cases are shown. Users can add a new test case to the question by clicking on the **Add** button on the **Test cases** page. They can write their solution by clicking on the **Add Answers** button on **Answers** page, which will open the editor. In this version, only Python is supported. Users can select the test cases they want to run, and then click the run test button.
+
+https://user-images.githubusercontent.com/56366125/128462484-bfafe432-dd5d-4dc7-ad40-b41d21e759c1.mp4
+
+The starter code is generate automatically and user can modify the function body directly. There are two types of errors, syntax error and runtime error. A syntax error will fail all test cases while runtime error won't.
+
+https://user-images.githubusercontent.com/56366125/128462494-f434a10c-2a57-4b5b-9814-96434b288d31.mp4
+
+When tests are completed, users can check their passing and failing tests with the actual outputs and expected outputs. They can also check out any of their history versions of code. After submitting answers, they will be returned to the **Answers** page of the question. 
+
+https://user-images.githubusercontent.com/56366125/128462525-68290547-2db4-4c05-8a83-fb7d7554208d.mp4
 
 ## About POC V2
 I decide to rewrite/restructure the whole application because of the following reasons:
