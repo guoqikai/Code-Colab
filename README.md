@@ -62,6 +62,7 @@ When user executes a test script, the interpreter keeps all declared variables i
 * Originally I planned to support Python and C/C++ but only I had time for Python implementation(exams were coming..)
 
 * POC V1 is [Deployed on Heroku](https://let-code.herokuapp.com/. Since the application is deployed on Heroku, it takes longer to load if it has not been accessed for a period.
+* Please open the app in Chrome or FireFox
 
 ### Type Definition
 As mentioned, the app has a parser that parse test case input to Python or C syntax. The input string should be in the following format:  
